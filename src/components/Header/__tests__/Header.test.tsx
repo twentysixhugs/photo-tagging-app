@@ -28,7 +28,14 @@ describe("Header's response to game state", () => {
       expect(characters).toEqual([]);
     });
 
-    it('should not display the timer before game starts', () => {});
+    it('should not display the timer before game starts', () => {
+      render(<Header isGameStarted={false} />);
+
+      const timer = screen.queryByText(/..:..:../i);
+
+      expect(timer).toBeNull();
+    });
+
     it('should display characters after game starts', () => {
       renderHeader(0, 1, 2, true);
 
