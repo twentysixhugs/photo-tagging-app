@@ -7,7 +7,7 @@ function renderHeader(
   seconds: number,
   isGameStarted: boolean,
 ) {
-  const mockTimerData: ITimerData = {
+  const mockTimerData: TimerData = {
     hours,
     minutes,
     seconds,
@@ -73,7 +73,7 @@ describe("Header's response to game state", () => {
     });
 
     it('should update the timer', () => {
-      const mockTimerData: ITimerData = {
+      const mockTimerData: TimerData = {
         hours: 0,
         minutes: 1,
         seconds: 2,

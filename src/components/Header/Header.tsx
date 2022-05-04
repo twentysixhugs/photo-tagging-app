@@ -2,8 +2,8 @@ import Characters from '../Characters';
 import Timer from './Timer';
 
 type HeaderProps =
-  | { isGameStarted: false; timerData?: ITimerData }
-  | { isGameStarted: true; timerData: ITimerData };
+  | { isGameStarted: false; timerData?: TimerData }
+  | { isGameStarted: true; timerData: TimerData };
 
 export default function Header({ isGameStarted, timerData }: HeaderProps) {
   return (

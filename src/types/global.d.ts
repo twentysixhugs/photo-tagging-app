@@ -1,7 +1,7 @@
 export {};
 
 declare global {
-  export interface ITimerData {
+  export interface TimerData {
     hours: number;
     minutes: number;
     seconds: number;
