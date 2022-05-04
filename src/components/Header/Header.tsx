@@ -1,13 +1,11 @@
 import Characters from '../Characters';
 import Timer from './Timer';
 
-export default function Header({
-  isGameStarted,
-  timerData,
-}: {
-  isGameStarted: boolean;
-  timerData?: ITimerData;
-}) {
+type HeaderProps =
+  | { isGameStarted: false; timerData?: ITimerData }
+  | { isGameStarted: true; timerData: ITimerData };
+
+export default function Header({ isGameStarted, timerData }: HeaderProps) {
   return (
     <header
       className={`c-header ${isGameStarted && 'c-header--game-started'}`}
@@ -16,13 +14,11 @@ export default function Header({
       {isGameStarted && (
         <>
           <Characters />
-          {timerData && (
-            <Timer
-              hours={timerData.hours}
-              minutes={timerData.minutes}
-              seconds={timerData.seconds}
-            />
-          )}
+          <Timer
+            hours={timerData.hours}
+            minutes={timerData.minutes}
+            seconds={timerData.seconds}
+          />
         </>
       )}
     </header>
