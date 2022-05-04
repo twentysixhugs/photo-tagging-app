@@ -1,6 +1,6 @@
 import React from 'react';
 import Rules from './Rules';
-import Characters from './Characters';
+import Characters from '../Characters';
 import StartButton from './StartButton';
 
 export default function Menu({
