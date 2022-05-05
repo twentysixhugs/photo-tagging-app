@@ -2,6 +2,7 @@ import React from 'react';
 import Rules from './Rules';
 import Characters from '../Characters';
 import StartButton from './StartButton';
+import './Menu.css';
 
 export default function Menu({
   onGameStart,
@@ -10,9 +11,11 @@ export default function Menu({
 }) {
   return (
     <div className="c-menu">
-      <Rules />
-      <Characters />
-      <StartButton onClick={onGameStart} />
+      <div className="c-menu__menu-content">
+        <Rules />
+        <Characters />
+        <StartButton onClick={onGameStart} />
+      </div>
     </div>
   );
 }
