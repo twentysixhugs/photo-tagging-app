@@ -3,7 +3,8 @@
   z-index: 1;
   top: 0;
   width: 100%;
-  height: var(--header-offset);
+  min-height: var(--header-offset);
+  padding-inline: 40px;
 
   display: flex;
   align-items: center;
