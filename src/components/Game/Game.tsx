@@ -9,7 +9,10 @@ export default function Game({ onUserGuess }: GameProps) {
   const [isScreenClicked, setIsScreenClicked] = useState(false);
 
   return (
-    <div className="c-game">
+    <div
+      className="c-game"
+      onClick={() => setIsScreenClicked(!isScreenClicked)}
+    >
       {isScreenClicked && <UserGuess onUserGuess={onUserGuess} />}
     </div>
   );
