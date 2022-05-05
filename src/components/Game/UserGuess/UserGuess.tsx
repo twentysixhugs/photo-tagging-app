@@ -1,11 +1,10 @@
 import React from 'react';
 import TargetingBox from './TargetingBox';
+import { GameProps } from '../Game';
 
-export default function UserGuess({
-  onUserGuess,
-}: {
-  onUserGuess: (option: string) => void;
-}) {
+type UserGuessProps = Pick<GameProps, 'onUserGuess'>;
+
+export default function UserGuess({ onUserGuess }: UserGuessProps) {
   return (
     <div className="c-user-guess">
       <TargetingBox />

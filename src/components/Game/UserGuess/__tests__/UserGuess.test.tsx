@@ -25,4 +25,15 @@ describe('Event handling', () => {
 
     expect(mockOnUserGuess).toHaveBeenCalled();
   });
+
+  it('Calls event handler when user makes a guess with the correct data', () => {
+    const mockOnUserGuess = jest.fn();
+    render(<UserGuess onUserGuess={mockOnUserGuess} />);
+
+    const firstOption = screen.getAllByText(/./i)[0];
+
+    userEvent.click(firstOption);
+
+    expect(mockOnUserGuess).toHaveBeenCalledWith(firstOption.textContent);
+  });
 });
