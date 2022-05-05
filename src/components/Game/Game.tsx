@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import UserGuess from './UserGuess';
+import useClickCoordinates from './Hooks/useClickCoordinates';
 import './Game.css';
 import gameImgWEBP from './Game.webp';
 import gameImgJPG from './Game.jpg';
@@ -11,10 +12,15 @@ export interface GameProps {
 export default function Game({ onUserGuess }: GameProps) {
   const [isScreenClicked, setIsScreenClicked] = useState(false);
 
+  const [x, y, setClickCoordinates] = useClickCoordinates();
+
   return (
     <div
       className="c-game"
-      onClick={() => setIsScreenClicked(!isScreenClicked)}
+      onClick={(e) => {
+        setIsScreenClicked(!isScreenClicked);
+        setClickCoordinates(e);
+      }}
     >
       {isScreenClicked && <UserGuess onUserGuess={onUserGuess} />}
       <img
