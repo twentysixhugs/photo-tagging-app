@@ -9,7 +9,9 @@ type HeaderProps =
 export default function Header({ isGameStarted, timerData }: HeaderProps) {
   return (
     <header
-      className={`c-header ${isGameStarted && 'c-header--game-started'}`}
+      className={`c-header${
+        isGameStarted ? ' c-header--game-started' : ''
+      }`}
     >
       <span className="c-header__game-name">FindMe</span>
       {isGameStarted && (
