@@ -1,0 +1,9 @@
+.c-game {
+  margin-top: var(--header-offset);
+  display: flex;
+}
+
+.c-game__img {
+  max-width: 100%;
+  min-height: 100%;
+}

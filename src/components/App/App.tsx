@@ -1,8 +1,8 @@
-import Header from './components/Header';
-import Menu from './components/Menu';
+import Header from '../Header';
+import Menu from '../Menu';
 import './App.css';
 import { useState } from 'react';
-import Game from './components/Game';
+import Game from '../Game';
 
 function App() {
   const [isGameStarted, setIsGameStarted] = useState(false);

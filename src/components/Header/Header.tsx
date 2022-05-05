@@ -1,5 +1,6 @@
 import Characters from '../Characters';
 import Timer from './Timer';
+import './Header.css';
 
 type HeaderProps =
   | { isGameStarted: false; timerData?: TimerData }

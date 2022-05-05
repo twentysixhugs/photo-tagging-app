@@ -1,0 +1,15 @@
+.c-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-offset);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #fff;
+  font-size: 2rem;
+
+  background: rgb(35, 35, 35);
+}
