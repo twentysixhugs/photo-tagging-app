@@ -15,3 +15,42 @@
 
   background: var(--ui-background-color);
 }
+
+.c-header__timer {
+  margin-left: 2rem;
+}
+
+.c-header__game-name {
+  margin-right: 2rem;
+}
+
+@media (max-width: 950px) {
+  .c-header {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .c-header {
+    padding-inline: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .c-header__game-name {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .c-header {
+    font-size: 0.8rem;
+  }
+
+  .c-header__timer {
+    margin-left: 0.5rem;
+  }
+
+  .c-header__game-name {
+    margin-right: 0.5rem;
+  }
+}

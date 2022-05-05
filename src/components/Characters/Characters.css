@@ -35,12 +35,24 @@
   filter: drop-shadow(0 0 2px rgb(0, 217, 255));
 }
 
+@media (max-width: 750px) {
+  .c-header .c-characters__character img {
+    height: 50px;
+    width: 50px;
+  }
+}
+
 @media (max-width: 500px) {
   .c-menu .c-characters {
     gap: 0.5rem;
   }
 
-  .c-menu .c-characters__character img {
-    width: 80px;
+  .c-header .c-characters__character img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .c-header .c-characters {
+    gap: 0.8rem;
   }
 }
