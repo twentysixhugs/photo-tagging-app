@@ -2,3 +2,35 @@
   display: flex;
   gap: 1rem;
 }
+
+.c-header .c-characters__character {
+  display: flex;
+  align-items: center;
+}
+
+.c-header .c-characters__character img {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  filter: drop-shadow(0 0 2px rgb(0, 217, 255));
+}
+
+.c-menu .c-characters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.c-menu .c-characters__character {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+
+.c-menu .c-characters__character img {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  filter: drop-shadow(0 0 2px rgb(0, 217, 255));
+}
