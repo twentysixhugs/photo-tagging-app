@@ -12,5 +12,5 @@
   color: #fff;
   font-size: 2rem;
 
-  background: rgb(35, 35, 35);
+  background: var(--ui-background-color);
 }
