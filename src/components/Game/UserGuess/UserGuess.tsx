@@ -2,11 +2,13 @@ import React from 'react';
 import TargetingBox from './TargetingBox';
 import { GameProps } from '../Game';
 
-type UserGuessProps = Pick<GameProps, 'onUserGuess'>;
+/* Take specific props from GameProps and take an object with styling */
+/* Since it has a dynamic positioning, it needs to accept different coordinates */
+type UserGuessProps = Pick<GameProps, 'onUserGuess'> & { style: Style };
 
-export default function UserGuess({ onUserGuess }: UserGuessProps) {
+export default function UserGuess({ onUserGuess, style }: UserGuessProps) {
   return (
-    <div className="c-user-guess">
+    <div style={{ ...style }} className="c-user-guess">
       <TargetingBox />
       <button
         onClick={() => {

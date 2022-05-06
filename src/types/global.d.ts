@@ -6,4 +6,6 @@ declare global {
     minutes: number;
     seconds: number;
   }
+
+  export type Style = { [cssProperty: string]: string };
 }
