@@ -40,6 +40,11 @@
     height: 50px;
     width: 50px;
   }
+
+  .c-menu .c-characters__character img {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -50,6 +55,11 @@
   .c-header .c-characters__character img {
     width: 30px;
     height: 30px;
+  }
+
+  .c-menu .c-characters__character img {
+    width: 50px;
+    height: 50px;
   }
 
   .c-header .c-characters {
