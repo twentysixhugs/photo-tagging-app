@@ -17,7 +17,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  background: var(--ui-background-color);
+  background: var(--ui-background-color-1);
   border-radius: 16px;
 }
 
@@ -70,7 +70,7 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    background: var(--ui-background-color);
+    background: var(--ui-background-color-1);
     border-radius: 16px;
   }
 

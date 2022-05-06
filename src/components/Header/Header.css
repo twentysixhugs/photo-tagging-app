@@ -13,7 +13,7 @@
   color: #fff;
   font-size: 2rem;
 
-  background: var(--ui-background-color);
+  background: var(--ui-background-color-1);
 }
 
 .c-header__timer {
