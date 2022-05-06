@@ -17,3 +17,9 @@ body {
   --header-offset: 100px;
   --ui-background-color: rgb(24, 28, 36);
 }
+
+@media (max-width: 400px) {
+  #root {
+    --header-offset: 60px;
+  }
+}

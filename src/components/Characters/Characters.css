@@ -37,8 +37,8 @@
 
 @media (max-width: 750px) {
   .c-header .c-characters__character img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
   }
 
   .c-menu .c-characters__character img {
