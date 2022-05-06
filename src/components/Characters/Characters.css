@@ -1,11 +1,12 @@
 .c-header .c-characters {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .c-header .c-characters__character {
   display: flex;
   align-items: center;
+  gap: 4px;
 }
 
 .c-header .c-characters__character img {
@@ -36,6 +37,10 @@
 }
 
 @media (max-width: 750px) {
+  .c-header .c-characters {
+    gap: 1rem;
+  }
+
   .c-header .c-characters__character img {
     height: 40px;
     width: 40px;
@@ -64,5 +69,12 @@
 
   .c-header .c-characters {
     gap: 0.8rem;
+  }
+}
+
+@media (max-width: 315px) {
+  .c-header .c-characters__character img {
+    width: 20px;
+    height: 20px;
   }
 }
