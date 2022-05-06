@@ -1,6 +1,7 @@
 import React from 'react';
 import TargetingBox from './TargetingBox';
 import { GameProps } from '../Game';
+import './UserGuess.css';
 
 /* Take specific props from GameProps and take an object with styling */
 /* Since it has a dynamic positioning, it needs to accept different coordinates */
