@@ -6,10 +6,18 @@ import gameImgWEBP from './Game.webp';
 import gameImgJPG from './Game.jpg';
 
 export interface GameProps {
-  onUserGuess: (option: string) => void;
+  onUserGuess: (
+    option: string,
+    x: number | null,
+    y: number | null,
+  ) => void;
+  targetingBoxSize: 30 | 80;
 }
 
-export default function Game({ onUserGuess }: GameProps) {
+export default function Game({
+  onUserGuess,
+  targetingBoxSize,
+}: GameProps) {
   const [isScreenClicked, setIsScreenClicked] = useState(false);
 
   const [x, y, setClickCoordinates] = useClickCoordinates();
@@ -25,14 +33,23 @@ export default function Game({ onUserGuess }: GameProps) {
       {isScreenClicked && (
         /* Pass in the coordinates of the click so that we can
         show the targeting box at these coordinates */
+        /* Depending on the box size, define its position */
         <UserGuess
           style={{
             position: 'absolute',
             zIndex: '1',
-            top: `${y || 0}px`,
-            left: `${x || 0}px`,
+            top: `${(y && y - targetingBoxSize / 2) || 0}px`,
+            left: `${
+              (x &&
+                (targetingBoxSize === 30
+                  ? x - targetingBoxSize * 1.5
+                  : x - targetingBoxSize / 2)) ||
+              0
+            }px`,
           }}
           onUserGuess={onUserGuess}
+          x={x}
+          y={y}
         />
       )}
       <img
