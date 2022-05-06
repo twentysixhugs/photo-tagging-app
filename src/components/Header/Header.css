@@ -14,6 +14,7 @@
   font-size: 1.7rem;
 
   background: var(--ui-background-color-1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.226);
 }
 
 .c-header__timer {
@@ -22,11 +23,24 @@
 
 .c-header__game-name {
   margin-right: 2rem;
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: rgb(244, 244, 244);
 }
 
 @media (max-width: 950px) {
   .c-header {
     font-size: 1.3rem;
+  }
+
+  .c-header__game-name {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .c-header__game-name {
+    font-size: 1.2rem;
   }
 }
 
