@@ -14,10 +14,6 @@ export default function useBoxSize() {
   useEffect(() => {
     const onMediaChange = function () {
       setBoxSize(window.innerWidth < 700 ? 30 : 80);
-      console.log(
-        'range set to ' + (window.innerWidth < 700 ? 30 : 80),
-        'range was ' + boxSize,
-      );
     };
 
     const mediaQuery = window.matchMedia('(max-width: 700px)');
