@@ -131,7 +131,7 @@ function App() {
 
     setTimeout(() => {
       setGuessNotificationText(() => null);
-    }, 1800);
+    }, 2200);
   };
 
   return (
