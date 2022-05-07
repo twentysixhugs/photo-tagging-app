@@ -13,11 +13,11 @@
   height: 70px;
   width: 70px;
   border-radius: 100%;
-  filter: drop-shadow(0 0 2px rgb(0, 217, 255));
+  filter: drop-shadow(0 0 2px rgba(255, 222, 138, 0.571)) grayscale(0.15);
 }
 
 .c-header .c-characters__character--guessed {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .c-menu .c-characters {
@@ -37,7 +37,7 @@
   width: 120px;
   height: 120px;
   border-radius: 100%;
-  filter: drop-shadow(0 0 2px rgb(0, 217, 255));
+  filter: drop-shadow(0 0 2px rgba(255, 222, 138, 0.571)) grayscale(0.15);
 }
 
 @media (max-width: 750px) {
