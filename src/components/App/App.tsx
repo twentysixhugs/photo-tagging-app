@@ -3,11 +3,21 @@ import Menu from '../Menu';
 import Game from '../Game';
 import useBoxSize from './Hooks/useBoxSize';
 import { useEffect, useRef, useState } from 'react';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import { db } from '../../helpers/firebase-helper';
-import { doc, getDoc } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  addDoc,
+  collection,
+  query,
+  orderBy,
+  limit,
+} from 'firebase/firestore';
 import './App.css';
 import GameResult from '../GameResult';
 import GuessNotification from './GuessNotification';
+import { formatUnit as formatTimeUnit } from '../../helpers/time-formatter';
 
 function App() {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -91,6 +101,36 @@ function App() {
   }, [areAllCharactersGuessed]);
 
   const [isGameFinished, setIsGameFinished] = useState(false);
+
+  /* Query and save in the state the best user scores */
+  /* If current user's score becomes one of them, it'll be updated here as well */
+
+  useEffect(() => {
+    if (!isGameFinished) return;
+
+    (async () => {
+      try {
+        await addDoc(collection(db, 'scores'), {
+          hours: timerData.hours,
+          minutes: timerData.minutes,
+          seconds: timerData.seconds,
+          fullTime: `${formatTimeUnit(timerData.hours)}:${formatTimeUnit(
+            timerData.minutes,
+          )}:${formatTimeUnit(timerData.seconds)}`,
+        });
+      } catch (err) {
+        alert('Something went wrong when saving your score');
+      }
+    })();
+  }, [isGameFinished, timerData]);
+
+  const scoresQuery = query(
+    collection(db, 'scores'),
+    orderBy('fullTime', 'desc'),
+    limit(10),
+  );
+
+  const [scoresSnapshot] = useCollection(scoresQuery);
 
   /* When the user makes a guess, the app shows an in-game notification
   about guess result and the guessed character name */
@@ -205,21 +245,13 @@ function App() {
             shouldHideTargetingBox={areAllCharactersGuessed}
           />
           <GameResult
-            scoresData={[
-              '00:00:01',
-              '00:00:01',
-              '00:00:01',
-              '00:00:01',
-              '00:00:01',
-              '00:00:01',
-              '00:00:01',
-              '00:00:01',
-              '00:00:01',
-              '00:00:01',
-            ]}
+            scoresData={
+              scoresSnapshot?.docs.map(
+                (doc) => doc.data().fullTime as string,
+              ) || []
+            }
             onPlayAgain={() => {}}
             time={timerData}
-            place="26"
           />
         </>
       ) : (
