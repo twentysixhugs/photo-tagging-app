@@ -4,6 +4,12 @@ import UserGuess from '../UserGuess';
 
 const mockStyle = {};
 
+const mockRemainingCharacters: RemainingCharacters = {
+  yuna: true,
+  kratos: true,
+  ratchet: true,
+};
+
 describe('Rendering', () => {
   it('Renders dropdown', () => {
     const mockOnUserGuess = jest.fn();
@@ -14,6 +20,7 @@ describe('Rendering', () => {
         x={1}
         y={1}
         style={mockStyle}
+        remainingCharacters={mockRemainingCharacters}
       />,
     );
 
@@ -32,6 +39,7 @@ describe('Event handling', () => {
         x={1}
         y={1}
         style={mockStyle}
+        remainingCharacters={mockRemainingCharacters}
       />,
     );
 
@@ -50,6 +58,7 @@ describe('Event handling', () => {
         x={1}
         y={1}
         style={mockStyle}
+        remainingCharacters={mockRemainingCharacters}
       />,
     );
 
