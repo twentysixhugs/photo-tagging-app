@@ -1,9 +1,9 @@
 import { GameResultProps } from './GameResult';
 import Timer from '../Timer';
 
-type StatsProps = Pick<GameResultProps, 'time' | 'place'>;
+type StatsProps = Pick<GameResultProps, 'time'>;
 
-export default function Stats({ time, place }: StatsProps) {
+export default function Stats({ time }: StatsProps) {
   return (
     <>
       <h1 className="c-game-result__heading">Time</h1>
@@ -12,7 +12,6 @@ export default function Stats({ time, place }: StatsProps) {
         minutes={time.minutes}
         seconds={time.seconds}
       />
-      <span className="c-game-result__place">Your place: {place}</span>
     </>
   );
 }
