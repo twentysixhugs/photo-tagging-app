@@ -1,6 +1,7 @@
 import Leaderboard from './Leaderboard';
 import Stats from './Stats';
 import PlayAgain from './PlayAgain';
+import Links from './Links/Links';
 import './GameResult.css';
 
 export interface GameResultProps {
@@ -21,6 +22,7 @@ export default function GameResult({
         <div className="c-game-result__wrapper">
           <Stats time={time} />
           <PlayAgain onPlayAgain={onPlayAgain} />
+          <Links />
         </div>
       </div>
     </div>
