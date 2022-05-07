@@ -2,11 +2,16 @@ import Characters from '../Characters';
 import Timer from './Timer';
 import './Header.css';
 
-type HeaderProps =
+type HeaderProps = (
   | { isGameStarted: false; timerData?: TimerData }
-  | { isGameStarted: true; timerData: TimerData };
+  | { isGameStarted: true; timerData: TimerData }
+) & { remainingCharacters?: RemainingCharacters };
 
-export default function Header({ isGameStarted, timerData }: HeaderProps) {
+export default function Header({
+  isGameStarted,
+  timerData,
+  remainingCharacters,
+}: HeaderProps) {
   return (
     <header
       className={`c-header${
@@ -16,7 +21,7 @@ export default function Header({ isGameStarted, timerData }: HeaderProps) {
       <span className="c-header__game-name">FindMe</span>
       {isGameStarted && (
         <>
-          <Characters />
+          <Characters remainingCharacters={remainingCharacters} />
           <Timer
             hours={timerData.hours}
             minutes={timerData.minutes}

@@ -1,21 +1,37 @@
 import './Characters.css';
-import YunaIMG from '../../assets/Yuna-small.svg';
-import KratosIMG from '../../assets/Kratos-small.svg';
-import RatchetIMG from '../../assets/Ratchet-small.svg';
+import yunaIMG from '../../assets/Yuna-small.svg';
+import kratosIMG from '../../assets/Kratos-small.svg';
+import ratchetIMG from '../../assets/Ratchet-small.svg';
 
-export default function Characters() {
+type CharactersProps = {
+  remainingCharacters?: RemainingCharacters;
+};
+
+export default function Characters({
+  remainingCharacters,
+}: CharactersProps) {
+  function getCharacterClassName(
+    characterName: 'yuna' | 'kratos' | 'ratchet',
+  ) {
+    return remainingCharacters
+      ? remainingCharacters[characterName]
+        ? 'c-characters__character'
+        : 'c-characters__character c-characters__character--guessed'
+      : 'c-characters__character';
+  }
+
   return (
     <div className="c-characters">
-      <div className="c-characters__character">
-        <img src={YunaIMG} alt=""></img>
+      <div className={getCharacterClassName('yuna')}>
+        <img src={yunaIMG} alt=""></img>
         <span>Yuna</span>
       </div>
-      <div className="c-characters__character">
-        <img src={KratosIMG} alt=""></img>
+      <div className={getCharacterClassName('kratos')}>
+        <img src={kratosIMG} alt=""></img>
         <span>Kratos</span>
       </div>
-      <div className="c-characters__character">
-        <img src={RatchetIMG} alt=""></img>
+      <div className={getCharacterClassName('ratchet')}>
+        <img src={ratchetIMG} alt=""></img>
         <span>Ratchet</span>
       </div>
     </div>

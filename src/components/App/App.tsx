@@ -2,7 +2,7 @@ import Header from '../Header';
 import Menu from '../Menu';
 import Game from '../Game';
 import useBoxSize from './Hooks/useBoxSize';
-import { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { db } from '../../helpers/firebase-helper';
 import { doc, getDoc } from 'firebase/firestore';
 import './App.css';
@@ -10,6 +10,13 @@ import './App.css';
 function App() {
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [targetingBoxSize] = useBoxSize();
+
+  const [remainingCharacters, setRemainingCharacters] =
+    useState<RemainingCharacters>({
+      yuna: true,
+      kratos: true,
+      ratchet: true,
+    });
 
   const handleUserGuess = async function (
     option: string,
@@ -74,7 +81,10 @@ function App() {
       realAbsoluteCoordinates[1] >= rangeY[0] &&
       realAbsoluteCoordinates[1] <= rangeY[1]
     ) {
-      console.log('Guessed');
+      setRemainingCharacters({
+        ...remainingCharacters,
+        [option.toLowerCase()]: false,
+      });
     }
   };
 
@@ -84,6 +94,7 @@ function App() {
         <Header
           isGameStarted={true}
           timerData={{ hours: 1, minutes: 1, seconds: 1 }}
+          remainingCharacters={remainingCharacters}
         />
       ) : (
         <>

@@ -8,4 +8,8 @@ declare global {
   }
 
   export type Style = { [cssProperty: string]: string };
+
+  export type RemainingCharacters = {
+    [name: string]: boolean;
+  };
 }
