@@ -17,12 +17,16 @@ export default function UserGuess({
   x,
   y,
 }: UserGuessProps) {
+  /* onUserGuess may be undefined and it's intetional
+  If a user removes the 'game result' component
+  from the source after game ends and this component is shown,
+  they won't be able to make another db query */
   return (
     <div style={{ ...style }} className="c-user-guess">
       <TargetingBox />
       <button
         onClick={() => {
-          onUserGuess('Yuna', x, y);
+          onUserGuess && onUserGuess('Yuna', x, y);
         }}
         className="c-user-guess__option"
       >
@@ -30,7 +34,7 @@ export default function UserGuess({
       </button>
       <button
         onClick={() => {
-          onUserGuess('Kratos', x, y);
+          onUserGuess && onUserGuess('Kratos', x, y);
         }}
         className="c-user-guess__option"
       >
@@ -38,7 +42,7 @@ export default function UserGuess({
       </button>
       <button
         onClick={() => {
-          onUserGuess('Ratchet', x, y);
+          onUserGuess && onUserGuess('Ratchet', x, y);
         }}
         className="c-user-guess__option"
       >

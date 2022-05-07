@@ -6,6 +6,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { db } from '../../helpers/firebase-helper';
 import { doc, getDoc } from 'firebase/firestore';
 import './App.css';
+import GameResult from '../GameResult';
 
 function App() {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -17,6 +18,25 @@ function App() {
       kratos: true,
       ratchet: true,
     });
+
+  const [isGameFinished, setIsGameFinished] = useState(false);
+
+  useEffect(() => {
+    console.log({ remainingCharacters });
+    if (
+      !remainingCharacters.yuna &&
+      !remainingCharacters.kratos &&
+      !remainingCharacters.ratchet
+    ) {
+      /* The game is finished, but the 'started' state still remains,
+      as it wasn't stopped and now the user will see the results of it*/
+      setIsGameFinished(true);
+    }
+  }, [remainingCharacters]);
+
+  useEffect(() => {
+    console.log(isGameFinished);
+  }, [isGameFinished]);
 
   const handleUserGuess = async function (
     option: string,
@@ -102,10 +122,22 @@ function App() {
           <Menu onGameStart={() => setIsGameStarted(true)} />
         </>
       )}
-      <Game
-        onUserGuess={handleUserGuess}
-        targetingBoxSize={targetingBoxSize}
-      />
+      {isGameFinished ? (
+        <>
+          <Game targetingBoxSize={targetingBoxSize} />
+          <GameResult
+            scoresData={['1', '2']}
+            onPlayAgain={() => {}}
+            time={'01:01:01'}
+            place="26"
+          />
+        </>
+      ) : (
+        <Game
+          onUserGuess={handleUserGuess}
+          targetingBoxSize={targetingBoxSize}
+        />
+      )}
     </>
   );
 }

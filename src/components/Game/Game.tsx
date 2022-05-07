@@ -6,7 +6,7 @@ import gameImgWEBP from './Game.webp';
 import gameImgJPG from './Game.jpg';
 
 export interface GameProps {
-  onUserGuess: (
+  onUserGuess?: (
     option: string,
     x: number | null,
     y: number | null,
