@@ -2,7 +2,7 @@ import Header from '../Header';
 import Menu from '../Menu';
 import Game from '../Game';
 import useBoxSize from './Hooks/useBoxSize';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { db } from '../../helpers/firebase-helper';
 import { doc, getDoc } from 'firebase/firestore';
 import './App.css';
@@ -17,13 +17,35 @@ function App() {
     seconds: 0,
   });
 
+  const [targetingBoxSize] = useBoxSize();
+
+  const [remainingCharacters, setRemainingCharacters] =
+    useState<RemainingCharacters>({
+      yuna: true,
+      kratos: true,
+      ratchet: true,
+    });
+
+  const [areAllCharactersGuessed, setAreAllCharactersGuessed] =
+    useState(false);
+
+  const timerInterval = useRef<NodeJS.Timer | null>(null);
+
   useEffect(() => {
     if (!isGameStarted) {
       setTimerData({ hours: 0, minutes: 0, seconds: 0 });
+      timerInterval.current && clearInterval(timerInterval.current);
+
       return;
     }
 
-    setInterval(() => {
+    if (areAllCharactersGuessed) {
+      timerInterval.current && clearInterval(timerInterval.current);
+
+      return;
+    }
+
+    timerInterval.current = setInterval(() => {
       setTimerData((timerData) => {
         let hours = timerData.hours;
         let minutes = timerData.minutes;
@@ -43,20 +65,12 @@ function App() {
 
         return { hours, minutes, seconds };
       });
+
+      return () => {
+        timerInterval.current && clearInterval(timerInterval.current);
+      };
     }, 1000);
-  }, [isGameStarted]);
-
-  const [targetingBoxSize] = useBoxSize();
-
-  const [remainingCharacters, setRemainingCharacters] =
-    useState<RemainingCharacters>({
-      yuna: true,
-      kratos: true,
-      ratchet: true,
-    });
-
-  const [areAllCharactersGuessed, setAreAllCharactersGuessed] =
-    useState(false);
+  }, [isGameStarted, areAllCharactersGuessed]);
 
   useEffect(() => {
     setAreAllCharactersGuessed(
