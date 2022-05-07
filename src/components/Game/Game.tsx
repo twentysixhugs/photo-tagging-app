@@ -12,11 +12,15 @@ export interface GameProps {
     y: number | null,
   ) => void;
   targetingBoxSize: 30 | 80;
+  remainingCharacters: RemainingCharacters;
+  shouldHideTargetingBox: boolean;
 }
 
 export default function Game({
   onUserGuess,
   targetingBoxSize,
+  remainingCharacters,
+  shouldHideTargetingBox,
 }: GameProps) {
   const [isScreenClicked, setIsScreenClicked] = useState(false);
 
@@ -36,6 +40,7 @@ export default function Game({
         /* Depending on the box size, define its position */
         <UserGuess
           style={{
+            display: shouldHideTargetingBox ? 'none' : 'flex',
             position: 'absolute',
             zIndex: '1',
             top: `${(y && y - targetingBoxSize / 2) || 0}px`,
@@ -50,6 +55,7 @@ export default function Game({
           onUserGuess={onUserGuess}
           x={x}
           y={y}
+          remainingCharacters={remainingCharacters}
         />
       )}
       <img
