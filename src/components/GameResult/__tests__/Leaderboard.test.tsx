@@ -23,7 +23,7 @@ describe('Leaderboard', () => {
     const leaderboardEntries = screen.getAllByText(/..:..:../i);
 
     leaderboardEntries.forEach((entry, i) =>
-      expect(entry.textContent).toBe(mockScoresData[i]),
+      expect(entry.textContent).toContain(mockScoresData[i]),
     );
   });
 

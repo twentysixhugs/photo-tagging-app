@@ -15,7 +15,9 @@ describe('Rendering stats data', () => {
   it('renders time data', () => {
     render(<Stats time={mockTimeData} place={mockPlace} />);
 
-    expect(screen.getByText(/..:..:../i)).toHaveTextContent(expectedTime);
+    expect(screen.getByText(/..:..:../i).textContent).toContain(
+      expectedTime,
+    );
   });
 
   it('renders user place data', () => {
