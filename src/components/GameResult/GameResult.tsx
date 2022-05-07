@@ -5,7 +5,7 @@ import PlayAgain from './PlayAgain';
 export interface GameResultProps {
   scoresData: string[];
   onPlayAgain: React.MouseEventHandler<HTMLButtonElement>;
-  time: string;
+  time: TimerData;
   place: string;
 }
 

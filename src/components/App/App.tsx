@@ -207,7 +207,7 @@ function App() {
           <GameResult
             scoresData={['1', '2']}
             onPlayAgain={() => {}}
-            time={'01:01:01'}
+            time={timerData}
             place="26"
           />
         </>
