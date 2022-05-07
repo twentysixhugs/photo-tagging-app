@@ -32,6 +32,7 @@
   display: grid;
   grid-template-rows: 0 10fr 0;
   grid-template-columns: 1fr 1fr;
+  min-height: 400px;
   gap: 80px;
   background: var(--ui-background-color-1);
   border-radius: 16px;
@@ -77,7 +78,7 @@
 }
 
 .c-game-result__play-again-btn {
-  margin-top: auto;
+  margin-top: 50px;
   width: max-content;
   padding: 20px 40px;
 
@@ -135,6 +136,7 @@
   }
 
   .c-game-result__play-again-btn {
+    margin-top: 20px;
     font-size: 1rem;
   }
 }
