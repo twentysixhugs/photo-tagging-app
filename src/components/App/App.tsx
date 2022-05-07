@@ -126,7 +126,7 @@ function App() {
 
   const scoresQuery = query(
     collection(db, 'scores'),
-    orderBy('fullTime', 'desc'),
+    orderBy('fullTime', 'asc'),
     limit(10),
   );
 
@@ -223,6 +223,13 @@ function App() {
     }, 2200);
   };
 
+  const handlePlayAgain = function () {
+    setIsGameStarted(false);
+    setRemainingCharacters({ yuna: true, kratos: true, ratchet: true });
+    setAreAllCharactersGuessed(false);
+    setIsGameFinished(false);
+  };
+
   return (
     <>
       {isGameStarted ? (
@@ -250,7 +257,7 @@ function App() {
                 (doc) => doc.data().fullTime as string,
               ) || []
             }
-            onPlayAgain={() => {}}
+            onPlayAgain={handlePlayAgain}
             time={timerData}
           />
         </>
