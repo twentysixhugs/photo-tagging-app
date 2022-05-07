@@ -16,6 +16,10 @@
   filter: drop-shadow(0 0 2px rgb(0, 217, 255));
 }
 
+.c-header .c-characters__character--guessed {
+  opacity: 0.6;
+}
+
 .c-menu .c-characters {
   display: flex;
   gap: 1rem;
