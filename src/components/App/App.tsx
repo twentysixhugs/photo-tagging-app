@@ -129,9 +129,9 @@ function App() {
       );
     }
 
-    setTimeout(() => {
-      setGuessNotificationText(() => null);
-    }, 1800);
+    // setTimeout(() => {
+    //   setGuessNotificationText(() => null);
+    // }, 1800);
   };
 
   return (

@@ -21,3 +21,10 @@
   background: #181c24cd;
   border-radius: 4px;
 }
+
+@media (max-width: 500px) {
+  .c-guess-notification__text {
+    min-height: 40px;
+    font-size: 1.2rem;
+  }
+}
