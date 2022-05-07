@@ -11,6 +11,41 @@ import GuessNotification from './GuessNotification';
 
 function App() {
   const [isGameStarted, setIsGameStarted] = useState(false);
+  const [timerData, setTimerData] = useState<TimerData>({
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    if (!isGameStarted) {
+      setTimerData({ hours: 0, minutes: 0, seconds: 0 });
+      return;
+    }
+
+    setInterval(() => {
+      setTimerData((timerData) => {
+        let hours = timerData.hours;
+        let minutes = timerData.minutes;
+        let seconds = timerData.seconds;
+
+        if (seconds >= 0 && seconds !== 60) {
+          seconds++;
+        }
+        if (minutes === 59 && seconds === 60) {
+          hours++;
+          minutes = 0;
+          seconds = 0;
+        } else if (seconds === 60) {
+          minutes++;
+          seconds = 0;
+        }
+
+        return { hours, minutes, seconds };
+      });
+    }, 1000);
+  }, [isGameStarted]);
+
   const [targetingBoxSize] = useBoxSize();
 
   const [remainingCharacters, setRemainingCharacters] =
@@ -139,7 +174,7 @@ function App() {
       {isGameStarted ? (
         <Header
           isGameStarted={true}
-          timerData={{ hours: 1, minutes: 1, seconds: 1 }}
+          timerData={timerData}
           remainingCharacters={remainingCharacters}
         />
       ) : (

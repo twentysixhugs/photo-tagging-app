@@ -17,7 +17,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.226);
 }
 
-.c-header__timer {
+.c-header .c-timer {
   margin-left: 2rem;
 }
 
@@ -60,7 +60,7 @@
     font-size: 0.8rem;
   }
 
-  .c-header__timer {
+  .c-header .c-timer {
     margin-left: 0.5rem;
   }
 
