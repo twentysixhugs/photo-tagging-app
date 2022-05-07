@@ -20,22 +20,28 @@ function App() {
       ratchet: true,
     });
 
-  const [isGameFinished, setIsGameFinished] = useState(false);
+  const [areAllCharactersGuessed, setAreAllCharactersGuessed] =
+    useState(false);
 
   useEffect(() => {
-    console.log({ remainingCharacters });
-    if (
+    setAreAllCharactersGuessed(
       !remainingCharacters.yuna &&
-      !remainingCharacters.kratos &&
-      !remainingCharacters.ratchet
-    ) {
+        !remainingCharacters.kratos &&
+        !remainingCharacters.ratchet,
+    );
+  }, [remainingCharacters]);
+
+  useEffect(() => {
+    if (areAllCharactersGuessed) {
       /* The game is finished, but the 'started' state still remains,
       as it wasn't stopped and now the user will see the results */
       setTimeout(() => {
         setIsGameFinished(true);
       }, 700);
     }
-  }, [remainingCharacters]);
+  }, [areAllCharactersGuessed]);
+
+  const [isGameFinished, setIsGameFinished] = useState(false);
 
   /* When the user makes a guess, the app shows an in-game notification
   about guess result and the guessed character name */
@@ -144,7 +150,11 @@ function App() {
       )}
       {isGameFinished ? (
         <>
-          <Game targetingBoxSize={targetingBoxSize} />
+          <Game
+            targetingBoxSize={targetingBoxSize}
+            remainingCharacters={remainingCharacters}
+            shouldHideTargetingBox={areAllCharactersGuessed}
+          />
           <GameResult
             scoresData={['1', '2']}
             onPlayAgain={() => {}}
@@ -156,6 +166,8 @@ function App() {
         <Game
           onUserGuess={handleUserGuess}
           targetingBoxSize={targetingBoxSize}
+          shouldHideTargetingBox={areAllCharactersGuessed}
+          remainingCharacters={remainingCharacters}
         />
       )}
       {guessNotificationText && (
