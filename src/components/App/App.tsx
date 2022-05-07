@@ -205,7 +205,18 @@ function App() {
             shouldHideTargetingBox={areAllCharactersGuessed}
           />
           <GameResult
-            scoresData={['1', '2']}
+            scoresData={[
+              '00:00:01',
+              '00:00:01',
+              '00:00:01',
+              '00:00:01',
+              '00:00:01',
+              '00:00:01',
+              '00:00:01',
+              '00:00:01',
+              '00:00:01',
+              '00:00:01',
+            ]}
             onPlayAgain={() => {}}
             time={timerData}
             place="26"
