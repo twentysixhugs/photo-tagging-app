@@ -1,0 +1,23 @@
+.c-guess-notification {
+  position: fixed;
+  top: calc(var(--header-offset) * 1.2);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-guess-notification__text {
+  min-height: 70px;
+  width: 70vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  font-size: 2rem;
+
+  background: #181c24cd;
+  border-radius: 4px;
+}

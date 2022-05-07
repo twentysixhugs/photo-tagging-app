@@ -7,6 +7,7 @@ import { db } from '../../helpers/firebase-helper';
 import { doc, getDoc } from 'firebase/firestore';
 import './App.css';
 import GameResult from '../GameResult';
+import GuessNotification from './GuessNotification';
 
 function App() {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -29,14 +30,19 @@ function App() {
       !remainingCharacters.ratchet
     ) {
       /* The game is finished, but the 'started' state still remains,
-      as it wasn't stopped and now the user will see the results of it*/
-      setIsGameFinished(true);
+      as it wasn't stopped and now the user will see the results */
+      setTimeout(() => {
+        setIsGameFinished(true);
+      }, 700);
     }
   }, [remainingCharacters]);
 
-  useEffect(() => {
-    console.log(isGameFinished);
-  }, [isGameFinished]);
+  /* When the user makes a guess, the app shows an in-game notification
+  about guess result and the guessed character name */
+
+  const [guessNotificationText, setGuessNotificationText] = useState<
+    null | string
+  >(null);
 
   const handleUserGuess = async function (
     option: string,
@@ -95,17 +101,31 @@ function App() {
     // Check if the coordinates from the backend (where the character actually is)
     // are within this box
 
-    if (
+    const isGuessed =
       realAbsoluteCoordinates[0] >= rangeX[0] &&
       realAbsoluteCoordinates[0] <= rangeX[1] &&
       realAbsoluteCoordinates[1] >= rangeY[0] &&
-      realAbsoluteCoordinates[1] <= rangeY[1]
-    ) {
+      realAbsoluteCoordinates[1] <= rangeY[1];
+
+    if (isGuessed) {
       setRemainingCharacters({
         ...remainingCharacters,
         [option.toLowerCase()]: false,
       });
+
+      setGuessNotificationText(
+        `Yes! That's ${option[0].toUpperCase() + option.slice(1)}!`,
+      );
+    } else {
+      setGuessNotificationText(
+        () =>
+          `No, that's not ${option[0].toUpperCase() + option.slice(1)}`,
+      );
     }
+
+    setTimeout(() => {
+      setGuessNotificationText(() => null);
+    }, 1800);
   };
 
   return (
@@ -137,6 +157,9 @@ function App() {
           onUserGuess={handleUserGuess}
           targetingBoxSize={targetingBoxSize}
         />
+      )}
+      {guessNotificationText && (
+        <GuessNotification text={guessNotificationText} />
       )}
     </>
   );
