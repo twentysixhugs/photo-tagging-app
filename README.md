@@ -15,5 +15,9 @@ The task is to find the three specified characters on the screen as fast as poss
 - React Firebase hooks
 
 ### Credits
-- Github, LinkedIn icons are from https://icons8.com/
-- <a target="_blank" href="https://icons8.com/icon/K34PJqYqWnDA/where">Favicon</a> by <a target="_blank" href="https://icons8.com">Icons8</a>
+##### Game image
+- Game image provided by [Pierre Roussel](https://www.artstation.com/pierreroussel)
+- [Full collection is available here](https://www.artstation.com/artwork/oOVVlJ)
+- [You can buy his prints on Etsy shop](https://www.etsy.com/shop/Angerinet)
+##### Icons
+- Github, LinkedIn icons and <a target="_blank" href="https://icons8.com/icon/K34PJqYqWnDA/where">favicon</a> are from <a target="_blank" href="https://icons8.com">Icons8</a>
