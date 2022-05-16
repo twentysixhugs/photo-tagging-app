@@ -7,12 +7,14 @@ The task is to find the three specified characters on the screen as fast as poss
 ## Key features
 - App's logic is integrated with a backend-as-a-service (BaaS) from Firebase. Any time a user makes a guess by clicking on where they think the character is, the app will calculate their click position that is not relative to the screen size, send it to the backend, and provide feedback on whether or not the guess was right. When all three characters are guessed, the app will save the time user spent on finding them, save their score on the backend, and query the first top 10 scores from there.
 - The game can be played both on small and large screens. As mentioned, character coordinates are calculated independent of the screen size.
+- It was written with TDD approach and React Testing Library.
 
 ## Technologies used
 - React.js
 - TypeScript
 - Firebase
 - React Firebase hooks
+- React Testing Library
 
 ### Credits
 ##### Game image
